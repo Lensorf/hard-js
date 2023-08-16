@@ -29,6 +29,10 @@ function initialize() { //! Объявляем функцию
           const option = document.createElement('option');
           option.value = geoObject.getAddressLine();
           option.text = geoObject.getAddressLine();
+          resultsSelect.addEventListener('change', (e) => {
+            addressInput.value = resultsSelect.value;
+            resultsSelect.style.display = 'none';
+          });
 
           //! Добавляем элемент списка в выпадающий список результатов
           resultsSelect.appendChild(option);
