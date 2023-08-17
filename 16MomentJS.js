@@ -1,8 +1,12 @@
-const moment = require('moment');
+/* eslint-disable max-len */
+// 16. Задача на модули и использование внешних библиотек: напишите модуль, который экспортирует функцию для работы с датами.
+// Внутри модуля используйте внешнюю библиотеку Moment.js для удобной работы с датами.
+
+const moment = require('moment'); //! подключаю библиоткеу
 
 module.exports = {
-  formatDate(date) {
-    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+  formatDate(date) { //! Функция которая получает дату
+    return moment(date).format('MMMM Do YYYY, h:mm:ss a'); //! возвращает дату в нужном формате
   },
 };
 

@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 // localStorage.setItem('test', 'a'); //! для теста можно раскоментить
+//! для проверки данных решений вместо деплоя использую Live Server в VS Code
 function calculateLocalStorageSize() { //! объявляем функцию
   let totalSize = 0; //! переменная для хранения общего размера занимаемой памяти
 

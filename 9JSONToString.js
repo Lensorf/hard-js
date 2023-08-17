@@ -2,6 +2,9 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
+
+// 9. Реализовать функцию конвертации JSON в строку
+
 //! Первый способ решения
 function json2str(json) { //! Объявляем функцию которая принимает в себя аргумент json
   if (!json || typeof json !== 'object') { //! проверяем не является ли json формата json или же не аругмент не типо объект

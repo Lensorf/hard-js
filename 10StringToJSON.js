@@ -6,6 +6,9 @@
 /* eslint-disable no-console */
 /* eslint-disable no-continue */
 /* eslint-disable no-plusplus */
+
+// 10.Реализовать функцию конвертации строки в JSON со всеми необходимыми проверками и валидациями.
+
 //! Объявляем функцию для преобразования
 function convertToJSON(data) {
   if (typeof data !== 'string') { //! Проверка является ли строкой если нет выдаём ошибку

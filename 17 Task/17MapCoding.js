@@ -2,6 +2,7 @@
 /* eslint-disable prefer-rest-params */
 /* eslint-disable func-names */
 /* eslint-disable no-undef */
+//! для проверки данных решений вместо деплоя использую Live Server в VS Code
 function initialize() { //! Объявляем функцию
   const addressInput = document.getElementById('addressInput'); //! Находим инпут с которого будем считывать значения
   const resultsSelect = document.getElementById('results'); //! Находим селект куда будем добавлять значения для выборки

@@ -1,6 +1,9 @@
 /* eslint-disable no-script-url */
 /* eslint-disable max-len */
 /* eslint-disable no-console */
+// 12. Задача на работу с объектами: создайте объект, представляющий собой книгу.
+// Объект должен иметь свойства, такие как: название книги, автор и год издания. Напишите методы для получения и изменения значений свойств книги.
+
 const book = { //! Объявление объектов с его методами
   title: 'JavaScript: The Good Parts',
   author: 'Douglas Crockford',
