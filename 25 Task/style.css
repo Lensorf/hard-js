@@ -1,0 +1,19 @@
+.mainBlock {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.button {
+    padding: 8px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.newElemBlock {
+    display: flex;
+    width: 360px;
+    background-color: #9370db;
+    padding: 8px;
+    font-size: 16px;
+}

@@ -4,6 +4,9 @@
 /* eslint-disable no-constant-condition */
 /* eslint-disable no-shadow */
 /* eslint-disable no-console */
+
+// 18. Подсчитать максимальный объем данных, который можно записать в localStorage вашего браузера.
+
 //! Первый вариант решения
 const testKey = 'test'; //! создаём ключ для localStorage
 let testData = ''; //! задаём пустую строку куда будем прибавлять "a" для проверки

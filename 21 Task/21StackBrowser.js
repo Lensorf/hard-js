@@ -1,4 +1,7 @@
 /* eslint-disable max-len */
+
+// 21. Вычислить размер коллстэка в основных браузерах: Chrome, Firefox, Opera и Safari (если есть возможность).
+
 //! для проверки данных решений вместо деплоя использую Live Server в VS Code
 function getStackSize() { //! Объявляем функцию
   let stackSize = 0; //! объяляем стек элементов
