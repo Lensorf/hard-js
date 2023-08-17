@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./24Tables.js"></script>
+</head>
+<body>
+    <table id="data-table">
+        <thead>
+          <tr>
+            <th onclick="sortTable(0)">Имя</th>
+            <th onclick="sortTable(1)">Фамилия</th>
+            <th onclick="sortTable(2)">Телефон</th>
+            <th onclick="sortTable(3)">Адрес</th>
+            <th onclick="sortTable(4)">Город</th>
+            <th onclick="sortTable(5)">Штат</th>
+            <th onclick="sortTable(6)">Индекс</th>
+          </tr>
+        </thead>
+        <tbody id="data-body"></tbody>
+      </table>
+      <div class="pagination" id="pagination"></div>
+</body>
+</html>

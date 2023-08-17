@@ -1,14 +1,6 @@
-/* eslint-disable max-len */
-
-// 19.Реализовать виджет, отображающий список постов из любого паблика в VK (подойдет любой паблик, где постов очень много).
-// Например, с помощью этой функции API VK. Виджет должен иметь фиксированные размеры и возможность прокрутки.
-// При прокрутке содержимого виджета до конца должны подгружаться новые посты. Необходимо реализовать возможность кэширования уже загруженных данных:
-// если пользователь закрыл страницу, а потом снова открыл ее, виджет должен отображать все загруженные ранее данные (новые данные должны подгружаться из учетом уже загруженных ранее).
-// При переполнении localStorage, данные, загруженные последними должны вытеснять данные загруженные первыми.
-
 //! ссылка которую использовал при проверках window.location.href = 'https://!oauth.vk.com/authorize?client_id=51729989&display=page&redirect_uri=https://!lensorf.github.io/wb-L1-19&scope=wall&response_type=token&v=5.131&state=123456'
 
-const token = window.location.hash.split('=')[1].split('&')[0]; //! токен авторизации для взаимодействия с апи
+const token = window.location.hash.split("=")[1].split("&")[0] //! токен авторизации для взаимодействия с апи
 
 //! Установим области и переменные для работы виджета
 const widget = document.querySelector('.vk-widget'); //! нашёл блок виджета
@@ -22,39 +14,39 @@ function loadPosts() { //! объявляем функцию загрузки п
 
   VK.Api.call('wall.get', { //! запрос использует ключевые слова VK.Api.call для вызова метода получения постов первый аргумент это метод вызова второй параметры
     owner_id: -119334888,
-    domain: 'nisnom',
-    count,
-    offset,
+    domain: 'nisnom', 
+    count: count,
+    offset: offset,
     access_token: token,
-    v: 5.131,
-  }, (r) => { //! обрабатываем ответ от апи
+    v: 5.131
+    }, (r) => { //! обрабатываем ответ от апи
     if (r.response) { //! проверка пришло ли нам что либо
       const newPosts = r.response.items; //! задаём как массив объектов пришедший с апи
-      const html = newPosts //! создаём новый массив при помощи метода map который вернёт нам вёрстку новых элементов для дальнейших действий 
+      const html = newPosts //! создаём новый массив при помощи метода map который вернёт нам вёрстку новых элементов для дальнейших действий
         .map(
           (p) => `
           <li class="vk-widget-post">
             <div class="vk-widget-post-title">${p.text}</div>
             <div class="vk-widget-post-date">${new Date(
-    p.date * 1000,
-  ).toLocaleDateString()}</div>
-            <img class=ImgAll src=${p.attachments[0].photo?.sizes[4].url}
+              p.date * 1000
+            ).toLocaleDateString()}</div>
+            <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
           </li>
-        `,
+        `
         )
         .join(''); //! соединяем верстку
       postsList.insertAdjacentHTML('beforeend', html); //! добавляем посты в список
 
       posts = posts.concat(newPosts); //! добавляем посты в массив для кэширования
       offset += count; //! увеличиваем смещение
-      observer.observe(document.querySelector('.vk-widget-post:last-child')); //! Устанавливаем слежку за последним элементом
+      observer.observe(document.querySelector('.vk-widget-post:last-child')) //! Устанавливаем слежку за последним элементом
     }
   });
 }
 
-//! Обработка скроллинга
-const observer = new IntersectionObserver((posts) => { //! ! Взять с MDN
-  posts.forEach((post) => { //! следим за тем как проходим по постам
+//! Обработка скроллинга 
+const observer = new IntersectionObserver(posts => { //!! Взять с MDN 
+  posts.forEach(post => { //! следим за тем как проходим по постам
     if (post.isIntersecting) { //! если посты кончаются подгружаем новые
       loadPosts(); //! вызываем функцию подргузки постов
     }
@@ -82,11 +74,11 @@ function loadData() {
         <li class="vk-widget-post">
           <div class="vk-widget-post-title">${p.text}</div>
           <div class="vk-widget-post-date">${new Date(
-    p.date * 1000,
-  ).toLocaleDateString()}</div>
-          <img class=ImgAll src=${p.attachments[0].photo?.sizes[4].url}
+            p.date * 1000
+          ).toLocaleDateString()}</div>
+          <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
         </li>
-      `,
+      `
       )
       .join('');
     postsList.innerHTML = html; //! отображаем кэшированные посты в списке
@@ -103,11 +95,11 @@ function evictData(postsToEvict) {
       <li class="vk-widget-post">
         <div class="vk-widget-post-title">${p.text}</div>
         <div class="vk-widget-post-date">${new Date(
-    p.date * 1000,
-  ).toLocaleDateString()}</div>
-        <img class=ImgAll src=${p.attachments[0].photo?.sizes[4].url}
+          p.date * 1000
+        ).toLocaleDateString()}</div>
+        <img class=ImgAll src=${p.attachments[0]['photo']?.sizes[4].url}
       </li>
-    `,
+    `
     )
     .join('');
   postsList.innerHTML = remainingPosts; //! отображаем оставшиеся посты в списке
