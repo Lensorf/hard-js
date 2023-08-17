@@ -11,9 +11,9 @@
 
 //! Первый способ решения
 const functions = [ //! Массив функций
-  () => console.log(1),
-  () => console.log(2),
-  () => console.log(3),
+  () => console.log('Первый способ', 1),
+  () => console.log('Первый способ', 2),
+  () => console.log('Первый способ', 3),
   // добавьте остальные функции в массив
 ];
 
@@ -57,3 +57,38 @@ const callFunctions = (index) => { //! Создаём переменую и за
 };
 
 callFunctions(0); //! Начинаем вызывать функции с индекса 0
+
+//! Третий способ при помощи промисификации 
+
+function delay(ms) { //! объявляем функцию делей которая возвращает промис, который резолвится через указанное время ms
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function runFunctionsInOrder(functions) { //! Функция принимает в себя в качетсве аргументов массив функций
+  for(let i = 0; i < functions.length; i++) { //! используем цикл чтобы вызвать каждую функцию пока длина массива не закончится
+    await functions[i](); //! Вызов текущей функции
+
+    //! Задержка перед вызовом следующей функции
+    await delay(1000);
+
+    console.log(`Выполнена функция ${i+1}`);
+  }
+}
+
+//! Пример использования
+const functions3 = [
+  async function() {
+    console.log('Функция 1');
+  },
+  async function() {
+    console.log('Функция 2');
+  },
+  async function() {
+    console.log('Функция 3');
+  },
+  async function() {
+    console.log('Функция 3');
+  },
+];
+
+runFunctionsInOrder(functions3);
